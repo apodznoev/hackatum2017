@@ -8,4 +8,6 @@
     <string name="the_waiter">The Waiter</string>
     <string name="type">Type:</string>
     <string name="status">Status:</string>
+    <string name="price">Price:</string>
+    <string name="total_price">Total Price:</string>
 </resources>

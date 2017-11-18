@@ -54,6 +54,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
         private Drink mDrink;
         private TextView mName;
         private TextView mType;
+        private TextView mPrice;
         private TextView mStatus;
 
 
@@ -61,6 +62,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
             super(v);
             mName = (TextView) v.findViewById(R.id.tv_drink_name);
             mType = (TextView) v.findViewById(R.id.tv_drink_type);
+            mPrice = (TextView) v.findViewById(R.id.tv_drink_price);
             mStatus = (TextView) v.findViewById(R.id.tv_drink_status);
         }
 
@@ -68,6 +70,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
             mDrink = drink;
             mName.setText(drink.getName());
             mType.setText(drink.getType().getUiName());
+            mPrice.setText(String.valueOf(drink.getPrice()));
             mStatus.setText(String.valueOf(drink.getStatus()));
         }
     }
