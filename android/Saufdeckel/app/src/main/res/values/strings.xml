@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Saufdeckel</string>
+    <string name="empty_drinks">Empty Drinks</string>
+    <string name="all_coasters">All Coasters</string>
+    <string name="table">Table:</string>
+    <string name="last_drink">Last Drink:</string>
 </resources>

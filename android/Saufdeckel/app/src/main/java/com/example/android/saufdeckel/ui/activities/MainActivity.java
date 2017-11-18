@@ -1,4 +1,4 @@
-package com.example.android.saufdeckel.ui;
+package com.example.android.saufdeckel.ui.activities;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.ui.fragments.BaseParentFragment;
+import com.example.android.saufdeckel.ui.fragments.overview.CoasterOverviewFragment;
 
 import java.util.Stack;
 
@@ -30,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (_mFragmentStack == null) {
             _mFragmentStack = new Stack<String>();
-            //TODO add first fragment to show
-            //mCurrentFragment = RegisterFragment.newInstance();
+            mCurrentFragment = CoasterOverviewFragment.newInstance();
         }
 
         if (mCurrentFragment != null) {

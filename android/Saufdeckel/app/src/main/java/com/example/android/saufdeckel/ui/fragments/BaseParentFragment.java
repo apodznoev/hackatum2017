@@ -3,7 +3,7 @@ package com.example.android.saufdeckel.ui.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.example.android.saufdeckel.ui.MainActivity;
+import com.example.android.saufdeckel.ui.activities.MainActivity;
 
 
 public abstract class BaseParentFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.example.android.saufdeckel.ui;
+package com.example.android.saufdeckel.ui.activities;
 
 
 import android.content.Intent;
@@ -11,7 +11,7 @@ import com.example.android.saufdeckel.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    public static final int SPLASH_SCREEN_DELAY = 3000; //in ms
+    public static final int SPLASH_SCREEN_DELAY = 2500; //in ms
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
