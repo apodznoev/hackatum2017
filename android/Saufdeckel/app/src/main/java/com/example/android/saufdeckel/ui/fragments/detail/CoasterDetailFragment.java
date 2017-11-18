@@ -32,6 +32,7 @@ public class CoasterDetailFragment extends BaseParentFragment {
     private Coaster mCoaster;
     private RecyclerView mRecyclerView;
     private CoasterDrinksAdapter mAdapter;
+    private TextView mPrice;
 
     public CoasterDetailFragment() {
         // Required empty public constructor
@@ -67,8 +68,10 @@ public class CoasterDetailFragment extends BaseParentFragment {
 
         ImageView coasterAvatar = view.findViewById(R.id.iv_avatar_profile);
         TextView coasterName = view.findViewById(R.id.tv_coaster_name);
+        mPrice = view.findViewById(R.id.tv_total_price);
         Picasso.with(getContext()).load(mCoaster.getImageUrl()).into(coasterAvatar);
         coasterName.setText(mCoaster.getName());
+        calcTotalPrice();
         return view;
     }
 
@@ -84,5 +87,18 @@ public class CoasterDetailFragment extends BaseParentFragment {
         mUnbinder.unbind();
     }
 
+    private void calcTotalPrice() {
+        List<Drink> allDrinks = mCoaster.getAllDrinks();
+        double totalPrice = 0.00;
+
+        for(Drink drink : allDrinks) {
+            totalPrice = totalPrice + drink.getPrice();
+        }
+
+        totalPrice = Math.round(totalPrice * 100);
+        totalPrice = totalPrice / 100;
+
+        mPrice.setText(String.valueOf(totalPrice));
+    }
 
 }
