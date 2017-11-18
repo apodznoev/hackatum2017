@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import android.widget.Toast;
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.models.Drink;
 import com.squareup.picasso.Picasso;
@@ -55,6 +58,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
         private TextView mType;
         private TextView mPrice;
         private TextView mStatus;
+        private ImageView mImage;
 
 
         public OverviewHolder(View v) {
@@ -63,6 +67,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
             mType = (TextView) v.findViewById(R.id.tv_drink_type);
             mPrice = (TextView) v.findViewById(R.id.tv_drink_price);
             mStatus = (TextView) v.findViewById(R.id.tv_drink_status);
+            mImage = (ImageView) v.findViewById(R.id.iv_drink);
         }
 
         public void bindOverview(Context context, Drink drink) {
@@ -72,6 +77,20 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
             mType.setText(drink.getType().getUiName());
             mPrice.setText(String.valueOf(drink.getPrice()));
             mStatus.setText(String.valueOf(drink.getStatus()));
+
+            switch(drink.getType()) {
+                case BEER:
+                    Picasso.with(context).load(R.drawable.beer_icon).into(mImage);
+                    break;
+                case COCKTAIL:
+                    Picasso.with(context).load(R.drawable.cocktail_icon).into(mImage);
+                    break;
+                case SHOT:
+                    Picasso.with(context).load(R.drawable.shot_icon).into(mImage);
+                    break;
+                default:
+                    Toast.makeText(context, "Wrong Drink Type", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
