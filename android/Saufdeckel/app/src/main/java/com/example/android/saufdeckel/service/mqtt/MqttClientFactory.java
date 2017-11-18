@@ -1,26 +1,23 @@
-package com.hackatum2017.mqtt;
+package com.example.android.saufdeckel.service.mqtt;
 
-import org.eclipse.paho.client.mqttv3.*;
+import android.util.Log;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Arrays;
 
 /**
  * @author apodznoev
  * @since 18/11/17
  */
 public class MqttClientFactory {
-    private Logger logger = LoggerFactory.getLogger(MqttClientFactory.class);
+    private static final String BROKER_URL = "tcp://broker.hivemq.com:1883";
 
-
-    public MqttClient createClent() {
-        try {
+    public MqttClient createClent() throws MqttException {
             MqttClient client = new MqttClient(
 //                    "ssl://192.168.1.10:18884", //URI
-                    "tcp://broker.hivemq.com:1883", //URI
-                   "iot/iteratec-server", //ClientId
+                    BROKER_URL, //URI
+                    MqttClient.generateClientId(), //ClientId
                     new MemoryPersistence());
             MqttConnectOptions options = new MqttConnectOptions();
             /*SSLContext sslContext = SSLContext.getInstance("SSL");
@@ -36,13 +33,7 @@ public class MqttClientFactory {
                     ""));
 
             */
-            options.setUserName("iteratecIoT");
-//            options.setPassword("IoT$2017".toCharArray());
             client.connect(options);
             return client;
-        } catch (Exception e) {
-            logger.error("Cannot create MqttClient due to exception", e);
-            throw new RuntimeException(e);
-        }
     }
 }

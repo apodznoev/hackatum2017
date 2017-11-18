@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Coaster {
     private final static AtomicInteger counter = new AtomicInteger(0);
+
     private final int mId;
     private final String mName;
     private int mTableNumber;
@@ -34,10 +35,26 @@ public class Coaster {
         mAllDrinks.add(drink);
     }
 
+    public int getmId() {
+        return mId;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public int getmTableNumber() {
+        return mTableNumber;
+    }
+
+    public List<Drink> getmAllDrinks() {
+        return mAllDrinks;
+    }
+
     public Drink getCurrentDrink() {
-        if(mAllDrinks.isEmpty())
+        if (mAllDrinks.isEmpty())
             return null;
-        return mAllDrinks.get(mAllDrinks.size()-1);
+        return mAllDrinks.get(mAllDrinks.size() - 1);
     }
 
 }

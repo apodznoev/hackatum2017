@@ -1,8 +1,10 @@
 package com.hackatum2017;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.hackatum2017.mqtt.MqttClientFactory;
 import com.hackatum2017.mqtt.messages.Topic;
+import com.hackatum2017.mqtt.messages.WeightChangeMessage;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.slf4j.Logger;
@@ -37,7 +39,9 @@ public class DeckelApplication {
 
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
-                logger.info(topic + ": " + Arrays.toString(message.getPayload()));
+                logger.info(topic + ": " + new String(message.getPayload()));
+                ObjectMapper om = new ObjectMapper();
+                WeightChangeMessage car = om.readValue(new String(message.getPayload()), WeightChangeMessage.class);
             }
 
             @Override
@@ -45,8 +49,10 @@ public class DeckelApplication {
                 logger.info("Delivery of token {} completed", token);
             }
         });
+        ObjectMapper om = new ObjectMapper();
+        byte[] payload = om.writeValueAsBytes(new WeightChangeMessage(23455, 43443));
         client.subscribe(Topic.TEST_TOPIC.getTopic(), 1);
-        client.publish(Topic.TEST_TOPIC.getTopic(), "payload".getBytes(Charsets.UTF_8), 1, false);
+        client.publish(Topic.TEST_TOPIC.getTopic(), payload , 1, false);
     }
 }
 
