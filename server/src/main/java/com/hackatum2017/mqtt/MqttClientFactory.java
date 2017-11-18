@@ -20,7 +20,7 @@ public class MqttClientFactory {
             MqttClient client = new MqttClient(
 //                    "ssl://192.168.1.10:18884", //URI
                     "tcp://broker.hivemq.com:1883", //URI
-                    MqttClient.generateClientId(), //ClientId
+                   "iot/iteratec-server", //ClientId
                     new MemoryPersistence());
             MqttConnectOptions options = new MqttConnectOptions();
             /*SSLContext sslContext = SSLContext.getInstance("SSL");
@@ -37,7 +37,7 @@ public class MqttClientFactory {
 
             */
             options.setUserName("iteratecIoT");
-            options.setPassword("IoT$2017".toCharArray());
+//            options.setPassword("IoT$2017".toCharArray());
             client.connect(options);
             return client;
         } catch (Exception e) {
