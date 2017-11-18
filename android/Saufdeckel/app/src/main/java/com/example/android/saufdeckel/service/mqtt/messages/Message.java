@@ -6,6 +6,4 @@ package com.example.android.saufdeckel.service.mqtt.messages;
  */
 public interface Message {
     Topic getTopic();
-
-    byte[] serialise();
 }

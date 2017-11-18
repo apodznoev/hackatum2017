@@ -1,19 +1,23 @@
 package com.example.android.saufdeckel.service.mqtt.messages;
 
 
-import com.example.android.saufdeckel.service.mqtt.messages.Message;
-import com.example.android.saufdeckel.service.mqtt.messages.Topic;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author apodznoev
  * @since 18/11/17
  */
 public class TestMessage implements Message {
-    private final byte[] payload;
+    private final String testParamA;
+    private final int testParamB;
 
-    public TestMessage(byte[] payload) {
-        this.payload = payload;
+    @JsonCreator
+    public TestMessage(@JsonProperty("testParamA") String testParamA, @JsonProperty("testParamB") int testParamB) {
+        this.testParamA = testParamA;
+        this.testParamB = testParamB;
     }
+
 
     @Override
     public Topic getTopic() {
@@ -21,7 +25,10 @@ public class TestMessage implements Message {
     }
 
     @Override
-    public byte[] serialise() {
-        return payload;
+    public String toString() {
+        return "TestMessage{" +
+                "testParamA='" + testParamA + '\'' +
+                ", testParamB=" + testParamB +
+                '}';
     }
 }

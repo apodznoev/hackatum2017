@@ -7,9 +7,9 @@ import java.util.Arrays;
  * @since 18/11/17
  */
 public enum Topic {
-    TEST_TOPIC("iot/iteratec/deckel_test_topic"),
-    BRIGHTNESS_CHANGE_COMMAND("iot/iteratec/deckel_change_brightness"),
-    WEIGHT_CHANGE_EVENT("iot/iteratec/deckel_weight_changed");
+    TEST_TOPIC("iot/iteratec/coaster_test_topic"),
+    CHANGE_LIGHT_COMMAND("iot/iteratec/coaster_change_brightness"),
+    WEIGHT_CHANGE_EVENT("iot/iteratec/coaster_weight_changed");
 
     private final String topic;
 

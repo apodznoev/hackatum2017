@@ -59,17 +59,17 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void drinkLevelChanged(int coasterId, double drinkLevel) {
+            public void drinkLevelChanged(Coaster updatedCoaster) {
 
             }
 
             @Override
-            public void drinkFinished(int coasterId) {
+            public void drinkFinished(Coaster updatedCoaster) {
 
             }
 
             @Override
-            public void newDrinkStarted(int coasterId, Drink newDrink) {
+            public void newDrinkStarted(Coaster updatedCoaster) {
 
             }
         });
