@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ import butterknife.Unbinder;
  * Created by lars on 18.11.17.
  */
 
-public class EmptyDrinkFragment extends Fragment {
+public class EmptyDrinkFragment extends Fragment implements EmptyDrinkAdapter.OnItemClickListener {
 
 
     private RecyclerView mRecyclerView;
@@ -50,7 +51,7 @@ public class EmptyDrinkFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_empty_list_view, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        mAdapter = new EmptyDrinkAdapter(getActivity(), getEmptyDrinkCoasters());
+        mAdapter = new EmptyDrinkAdapter(getActivity(), getEmptyDrinkCoasters(), this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(
                 getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mAdapter);
@@ -72,4 +73,8 @@ public class EmptyDrinkFragment extends Fragment {
     }
 
 
+    @Override
+    public void onCoasterItemClick() {
+        Log.i("TAG", "Click Empty");
+    }
 }

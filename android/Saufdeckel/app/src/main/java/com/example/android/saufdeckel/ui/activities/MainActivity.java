@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
+
+
         // set the Above View
         if (savedInstanceState != null) {
             mCurrentFragment = (BaseParentFragment)fragmentManager.getFragment(savedInstanceState, "currentFragment");

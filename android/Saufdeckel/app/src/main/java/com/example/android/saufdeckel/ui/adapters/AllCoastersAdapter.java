@@ -1,6 +1,7 @@
 package com.example.android.saufdeckel.ui.adapters;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +21,17 @@ public class AllCoastersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     private Context mContext;
-    private List<Coaster> mEmptyDrinkCoasters;
+    private List<Coaster> mAllCoasters;
+    private OnItemClickListener mListener;
 
-    public AllCoastersAdapter(Context context, List<Coaster> emptyDrinkCoasters) {
+    public interface OnItemClickListener {
+        void onCoasterItemClick();
+    }
+
+    public AllCoastersAdapter(Context context, List<Coaster> allCoasters, OnItemClickListener listener) {
         mContext = context;
-        mEmptyDrinkCoasters = emptyDrinkCoasters;
+        mAllCoasters = allCoasters;
+        mListener = listener;
     }
 
     @Override
@@ -32,38 +39,44 @@ public class AllCoastersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             View inflatedView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.all_coasters_row, parent, false);
-            return new OverviewHolder(inflatedView);
+            return new OverviewHolder(inflatedView, mListener);
 
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((OverviewHolder)holder).bindOverview(mContext, mEmptyDrinkCoasters.get(position));
+        ((OverviewHolder)holder).bindOverview(mContext, mAllCoasters.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mEmptyDrinkCoasters.size();
+        return mAllCoasters.size();
     }
 
     public static class OverviewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Coaster mCoaster;
+        private OnItemClickListener mListener;
         private TextView mCoasterName;
         private TextView mTableNumber;
         private TextView mCurrentDrink;
+        private CardView mCardView;
 
-        public OverviewHolder(View v) {
+        public OverviewHolder(View v, OnItemClickListener listener) {
             super(v);
-
+            mListener = listener;
             mCoasterName = (TextView) v.findViewById(R.id.tv_coaster_name);
             mTableNumber = (TextView) v.findViewById(R.id.tv_table_number);
             mCurrentDrink = (TextView) v.findViewById(R.id.tv_current_drink);
+            mCardView = (CardView) v.findViewById(R.id.cardview);
+            mCardView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-
+            if ( mListener != null ) {
+                mListener.onCoasterItemClick();
+            }
         }
 
         public void bindOverview(Context context, Coaster coaster) {
