@@ -64,7 +64,7 @@ public class AllCoastersFragment extends Fragment implements AllCoastersAdapter.
         dummyCoasters.add(new Coaster("Britney Spears", 4));
 
 
-        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", mPrice, Drink.DrinkType.Cocktail));
+        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", 0.99, Drink.DrinkType.COCKTAIL));
 
         return dummyCoasters;
     }

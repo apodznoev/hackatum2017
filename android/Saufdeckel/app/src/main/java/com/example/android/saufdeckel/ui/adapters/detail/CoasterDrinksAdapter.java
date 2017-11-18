@@ -67,7 +67,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
         public void bindOverview(Context context, Drink drink) {
             mDrink = drink;
             mName.setText(drink.getName());
-            mType.setText(drink.);
+            mType.setText(drink.getType().getUiName());
             mStatus.setText(String.valueOf(drink.getStatus()));
         }
     }

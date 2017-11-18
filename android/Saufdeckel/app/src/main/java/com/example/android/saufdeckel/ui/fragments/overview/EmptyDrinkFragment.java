@@ -63,7 +63,7 @@ public class EmptyDrinkFragment extends Fragment implements EmptyDrinkAdapter.On
         dummyCoasters.add(new Coaster("Lindsey Lohan", 1));
 
 
-        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", mPrice, Drink.DrinkType.Cocktail));
+        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", 3.99, Drink.DrinkType.COCKTAIL));
 
         return dummyCoasters;
     }
