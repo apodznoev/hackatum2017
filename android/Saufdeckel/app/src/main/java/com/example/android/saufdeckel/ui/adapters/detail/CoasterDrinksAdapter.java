@@ -1,15 +1,12 @@
 package com.example.android.saufdeckel.ui.adapters.detail;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.android.saufdeckel.R;
-import com.example.android.saufdeckel.models.Coaster;
 import com.example.android.saufdeckel.models.Drink;
 import com.squareup.picasso.Picasso;
 

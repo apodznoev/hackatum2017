@@ -1,5 +1,8 @@
 package com.example.android.saufdeckel.service.mqtt.messages;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.nio.ByteBuffer;
 
 /**
@@ -7,12 +10,13 @@ import java.nio.ByteBuffer;
  * @since 18/11/17
  */
 public class WeightChangeMessage implements Message {
-    private final int deckelId;
-    private final int newWeight;
+    private final int coasterId;
+    private final double newWeight;
 
-    public WeightChangeMessage(byte[] payload) {
-        this.deckelId = ByteBuffer.allocateDirect(4).get(payload, 0, 4).getInt();
-        this.newWeight = ByteBuffer.allocateDirect(4).get(payload, 4, 8).getInt();
+    @JsonCreator
+    public WeightChangeMessage(@JsonProperty("coasterId") int coasterId, @JsonProperty("newWeight") double newWeight) {
+        this.coasterId = coasterId;
+        this.newWeight = newWeight;
     }
 
     @Override
@@ -20,19 +24,12 @@ public class WeightChangeMessage implements Message {
         return Topic.WEIGHT_CHANGE_EVENT;
     }
 
-    @Override
-    public byte[] serialise() {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(8);
-        byteBuffer.putInt(0, deckelId);
-        byteBuffer.putInt(1, newWeight);
-        return byteBuffer.array();
+
+    public int getCoasterId() {
+        return coasterId;
     }
 
-    public int getDeckelId() {
-        return deckelId;
-    }
-
-    public int getNewWeight() {
+    public double getNewWeight() {
         return newWeight;
     }
 }

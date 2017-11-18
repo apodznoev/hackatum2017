@@ -14,16 +14,13 @@ public interface CoasterListener {
     void coastersLoaded(List<Coaster> coasters);
     /**
      * Triggered when level of last ordered drink for coaster is changed
-     * @param coasterId id of coaster
-     * @param drinkLevel remaining level in percentage
      */
-    void drinkLevelChanged(int coasterId, double drinkLevel);
+    void drinkLevelChanged(Coaster updatedCoaster);
 
     /**
      * Triggered when coaster had finished his current drink
-     * @param coasterId id of coaster
      */
-    void drinkFinished(int coasterId);
+    void drinkFinished(Coaster updatedCoaster);
 
-    void newDrinkStarted(int coasterId, Drink newDrink);
+    void newDrinkStarted(Coaster updatedCoaster);
 }

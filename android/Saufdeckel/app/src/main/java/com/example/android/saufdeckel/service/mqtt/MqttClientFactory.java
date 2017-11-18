@@ -13,7 +13,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 public class MqttClientFactory {
     private static final String BROKER_URL = "tcp://broker.hivemq.com:1883";
 
-    public MqttClient createClent() throws MqttException {
+    public MqttClient createClient() throws MqttException {
             MqttClient client = new MqttClient(
 //                    "ssl://192.168.1.10:18884", //URI
                     BROKER_URL, //URI
