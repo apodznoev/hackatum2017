@@ -10,5 +10,5 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface MessageSender {
 
-    CompletableFuture<Void> sendMessage(Message message);
+    //CompletableFuture<Void> sendMessage(Message message);
 }

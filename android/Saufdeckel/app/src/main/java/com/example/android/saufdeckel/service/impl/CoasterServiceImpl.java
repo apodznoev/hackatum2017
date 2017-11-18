@@ -44,7 +44,7 @@ public class CoasterServiceImpl implements CoastersService {
             return sum;
 
         coastersStorage.removeCoaster(coaster);
-        for (Drink drink : coaster.getmAllDrinks()) {
+        for (Drink drink : coaster.getAllDrinks()) {
             sum += drink.getPrice();
         }
 

@@ -6,8 +6,6 @@ import com.example.android.saufdeckel.service.mqtt.messages.Message;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-import java.util.concurrent.CompletableFuture;
-
 /**
  * @author apodznoev
  * @since 18/11/17
@@ -20,7 +18,7 @@ public class MessageSenderImpl implements MessageSender {
     }
 
 
-    @Override
+    /*@Override
     public CompletableFuture<Void> sendMessage(Message message) {
         CompletableFuture<Void> completableFuture = new CompletableFuture<>();
         try {
@@ -31,5 +29,5 @@ public class MessageSenderImpl implements MessageSender {
             completableFuture.completeExceptionally(e);
         }
         return completableFuture;
-    }
+    }*/
 }

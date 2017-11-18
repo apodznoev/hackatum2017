@@ -7,17 +7,14 @@ package com.example.android.saufdeckel.models;
 public class Drink {
     private final String mName;
     private final double mPrice;
-    private double mStatus;
     private final DrinkType mType;
+    private double mStatus;
 
     public Drink(String name, double price, DrinkType type) {
         mName = name;
         mPrice = price;
         mType = type;
-    }
-
-    public enum DrinkType {
-        BEER, COCKTAIL, SHOT
+        mStatus = 1.0;
     }
 
     public String getName() {
@@ -29,11 +26,25 @@ public class Drink {
     }
 
     public double getStatus() {
-
+        return mStatus;
     }
 
     public DrinkType getType() {
         return mType;
+    }
+
+    public enum DrinkType {
+        BEER("Beer"), COCKTAIL("Fancy coctail"), SHOT("Shot");
+
+        private final String uiName;
+
+        DrinkType(String uiName) {
+            this.uiName = uiName;
+        }
+
+        public String getUiName() {
+            return uiName;
+        }
     }
 
 }
