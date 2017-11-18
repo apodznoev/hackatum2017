@@ -2,7 +2,6 @@ package com.example.android.saufdeckel.models;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by lars on 18.11.17.
@@ -51,13 +50,13 @@ public class Drink {
 
         private final String uiName;
         private final double fullWeight;
-        private final double price;
+        private final double defaultPrice;
         private final List<String> namesPool;
 
         DrinkType(String uiName, double fullWeight, double price, List<String> namesPool) {
             this.uiName = uiName;
             this.fullWeight = fullWeight;
-            this.price = price;
+            this.defaultPrice = price;
             this.namesPool = namesPool;
         }
 
@@ -69,8 +68,8 @@ public class Drink {
             return uiName;
         }
 
-        public double getPrice() {
-            return price;
+        public double getDefaultPrice() {
+            return defaultPrice;
         }
 
         public String getRandomName() {

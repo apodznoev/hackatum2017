@@ -59,6 +59,7 @@ public class CoasterServiceImpl implements CoastersService {
     @Override
     public void setListener(CoasterListener listener) {
         clientListener = listener;
+        clientListener.coastersLoaded(coastersStorage.getCoasters());
     }
 
     @Override
@@ -188,7 +189,8 @@ public class CoasterServiceImpl implements CoastersService {
     private Drink predictNewDrink(WeightChangeMessage weightChangeMessage) {
         for (Drink.DrinkType drinkType : Drink.DrinkType.values()) {
             if (Math.abs(weightChangeMessage.getNewWeight() - drinkType.getFullWeight()) < drinkType.getFullWeight() / 5) {
-                return new Drink(drinkType.getRandomName(), drinkType.getPrice(), drinkType);
+                double randomPrice = (Math.round(1 + Math.random()) * 10) / 10 + drinkType.getDefaultPrice();
+                return new Drink(drinkType.getRandomName(), randomPrice, drinkType);
             }
         }
         return null;
