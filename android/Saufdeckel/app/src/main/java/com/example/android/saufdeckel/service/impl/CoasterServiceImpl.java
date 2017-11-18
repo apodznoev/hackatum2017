@@ -83,10 +83,11 @@ public class CoasterServiceImpl implements CoastersService {
                     switch (topic) {
                         case TEST_TOPIC:
                             TestMessage testMsg = mapper.readValue(msgString, TestMessage.class);
-                            System.out.println("Test message received:" + testMsg.toString());
+                            Log.i("MqTT","Test message received:" + testMsg.toString());
                             break;
                         case WEIGHT_CHANGE_EVENT:
                             WeightChangeMessage weightChangeMessage = mapper.readValue(msgString, WeightChangeMessage.class);
+                            Log.i("MqTT","Weight change message received:" + weightChangeMessage.toString());
                             Coaster coaster = getCoasterById(weightChangeMessage.getCoasterId());
                             if (coaster == null) {
                                 Log.e("MqTT", "Cannot find coaster for id:" + weightChangeMessage.getCoasterId());
