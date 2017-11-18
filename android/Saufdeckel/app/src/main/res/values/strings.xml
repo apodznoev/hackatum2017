@@ -6,4 +6,6 @@
     <string name="last_drink">Last Drink:</string>
     <string name="james">James</string>
     <string name="the_waiter">The Waiter</string>
+    <string name="type">Type:</string>
+    <string name="status">Status:</string>
 </resources>

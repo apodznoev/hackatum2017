@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,9 @@ import android.view.ViewGroup;
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.models.Coaster;
 import com.example.android.saufdeckel.models.Drink;
-import com.example.android.saufdeckel.ui.adapters.AllCoastersAdapter;
+import com.example.android.saufdeckel.ui.activities.MainActivity;
+import com.example.android.saufdeckel.ui.adapters.overview.AllCoastersAdapter;
+import com.example.android.saufdeckel.ui.fragments.detail.CoasterDetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class AllCoastersFragment extends Fragment implements AllCoastersAdapter.
     private List<Coaster> getAllCoasters() {
 
         List<Coaster> dummyCoasters = new ArrayList<Coaster>();
-        dummyCoasters.add(new Coaster("Charly Sheen", 3));
+        dummyCoasters.add(new Coaster("Charlie Sheen", 3));
         dummyCoasters.add(new Coaster("Ozzy Osbourne", 5));
         dummyCoasters.add(new Coaster("Lindsey Lohan", 1));
         dummyCoasters.add(new Coaster("Britney Spears", 4));
@@ -69,7 +70,7 @@ public class AllCoastersFragment extends Fragment implements AllCoastersAdapter.
     }
 
     @Override
-    public void onCoasterItemClick() {
-        Log.i("TAG", "Click All");
+    public void onCoasterItemClick(Coaster clickedCoaster) {
+        ((MainActivity)getActivity()).changeFragment(CoasterDetailFragment.newInstance(clickedCoaster));
     }
 }

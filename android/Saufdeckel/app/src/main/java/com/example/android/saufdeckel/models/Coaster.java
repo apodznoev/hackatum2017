@@ -1,5 +1,8 @@
 package com.example.android.saufdeckel.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -8,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by lars on 18.11.17.
  */
 
-public class Coaster {
+public class Coaster implements Parcelable {
     private final static AtomicInteger counter = new AtomicInteger(0);
 
     private final int mId;
@@ -35,20 +38,8 @@ public class Coaster {
         mAllDrinks.add(drink);
     }
 
-    public int getmId() {
+    public int getId() {
         return mId;
-    }
-
-    public String getmName() {
-        return mName;
-    }
-
-    public int getmTableNumber() {
-        return mTableNumber;
-    }
-
-    public List<Drink> getmAllDrinks() {
-        return mAllDrinks;
     }
 
     public Drink getCurrentDrink() {
@@ -57,4 +48,39 @@ public class Coaster {
         return mAllDrinks.get(mAllDrinks.size() - 1);
     }
 
+    public List<Drink> getAllDrinks() {
+        return mAllDrinks;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(mId);
+        parcel.writeString(mName);
+        parcel.writeInt(mTableNumber);
+        parcel.writeList(mAllDrinks);
+    }
+
+    public static final Parcelable.Creator<Coaster> CREATOR
+            = new Parcelable.Creator<Coaster>() {
+        public Coaster createFromParcel(Parcel in) {
+            return new Coaster(in);
+        }
+
+        public Coaster[] newArray(int size) {
+            return new Coaster[size];
+        }
+    };
+
+    private Coaster(Parcel in) {
+        mId = in.readInt();
+        mName = in.readString();
+        mTableNumber = in.readInt();
+        mAllDrinks = new ArrayList<Drink>();
+        in.readList(mAllDrinks, null);
+    }
 }

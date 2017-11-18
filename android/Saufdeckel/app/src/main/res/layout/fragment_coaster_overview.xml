@@ -52,7 +52,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="MissingPrefix"
-            tools:text="Charly Sheen" />
+            tools:text="Charlie Sheen" />
 
     </RelativeLayout>
 

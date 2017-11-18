@@ -7,31 +7,33 @@ package com.example.android.saufdeckel.models;
 public class Drink {
     private final String mName;
     private final double mPrice;
+    private double mStatus;
     private final DrinkType mType;
 
-    public Drink(String name, double mPrice, DrinkType type) {
+    public Drink(String name, double price, DrinkType type) {
         mName = name;
-        this.mPrice = mPrice;
+        mPrice = price;
         mType = type;
     }
 
     public enum DrinkType {
-        Beer, Cocktail, Shot
-    }
-
-    public String getmName() {
-        return mName;
-    }
-
-    public double getmPrice() {
-        return mPrice;
-    }
-
-    public DrinkType getmType() {
-        return mType;
+        BEER, COCKTAIL, SHOT
     }
 
     public String getName() {
         return mName;
     }
+
+    public double getPrice() {
+        return mPrice;
+    }
+
+    public double getStatus() {
+
+    }
+
+    public DrinkType getType() {
+        return mType;
+    }
+
 }

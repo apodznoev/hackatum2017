@@ -9,7 +9,6 @@ import com.example.android.saufdeckel.service.mqtt.MqttClientFactory;
 import com.example.android.saufdeckel.service.mqtt.messages.Topic;
 import org.eclipse.paho.client.mqttv3.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ public class CoasterServiceImpl implements CoastersService {
     @Override
     public Coaster getCoasterById(int coasterId) {
         for (Coaster coaster : coastersStorage.getCoasters()) {
-            if (coaster.getmId() == coasterId) {
+            if (coaster.getId() == coasterId) {
                 return coaster;
             }
         }
@@ -46,7 +45,7 @@ public class CoasterServiceImpl implements CoastersService {
 
         coastersStorage.removeCoaster(coaster);
         for (Drink drink : coaster.getmAllDrinks()) {
-            sum += drink.getmPrice();
+            sum += drink.getPrice();
         }
 
         return sum;
