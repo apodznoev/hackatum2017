@@ -61,6 +61,12 @@ public class EmptyDrinkFragment extends Fragment implements EmptyDrinkAdapter.On
         dummyCoasters.add(new Coaster("Charlie Sheen", 3, "http://i.dailymail.co.uk/i/pix/2012/03/12/article-0-121D6E7E000005DC-528_634x612.jpg"));
 
         dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", 3.99, Drink.DrinkType.COCKTAIL));
+        dummyCoasters.get(0).addDrink(new Drink("Paulaner", 1.99, Drink.DrinkType.BEER));
+        dummyCoasters.get(0).addDrink(new Drink("Tequila", 3.99, Drink.DrinkType.SHOT));
+        dummyCoasters.get(0).addDrink(new Drink("Tequila", 3.99, Drink.DrinkType.SHOT));
+        dummyCoasters.get(0).addDrink(new Drink("Tequila", 3.99, Drink.DrinkType.SHOT));
+        dummyCoasters.get(0).addDrink(new Drink("Cuba Libre", 3.99, Drink.DrinkType.COCKTAIL));
+        dummyCoasters.get(0).addDrink(new Drink("Augustiner", 1.99, Drink.DrinkType.BEER));
 
         return dummyCoasters;
     }
