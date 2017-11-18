@@ -8,14 +8,21 @@ import android.os.Bundle;
 
 
 import com.example.android.saufdeckel.R;
+import com.example.android.saufdeckel.models.Coaster;
+import com.example.android.saufdeckel.models.Drink;
+import com.example.android.saufdeckel.service.CoasterListener;
+import com.example.android.saufdeckel.service.CoastersService;
+import com.example.android.saufdeckel.service.impl.CoasterServiceImpl;
 import com.example.android.saufdeckel.ui.fragments.BaseParentFragment;
 import com.example.android.saufdeckel.ui.fragments.overview.CoasterOverviewFragment;
 
+import java.util.List;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
     private BaseParentFragment mCurrentFragment;
+    private CoastersService service;
     public static Stack<String> _mFragmentStack;
 
     @Override
@@ -24,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+
 
         // set the Above View
         if (savedInstanceState != null) {
@@ -36,8 +45,35 @@ public class MainActivity extends AppCompatActivity {
 
         if (mCurrentFragment != null) {
             addFragment(mCurrentFragment);
-
         }
+
+        initService();
+    }
+
+    private void initService() {
+        service = new CoasterServiceImpl();
+        service.setListener(new CoasterListener() {
+            @Override
+            public void coastersLoaded(List<Coaster> coasters) {
+
+            }
+
+            @Override
+            public void drinkLevelChanged(int coasterId, double drinkLevel) {
+
+            }
+
+            @Override
+            public void drinkFinished(int coasterId) {
+
+            }
+
+            @Override
+            public void newDrinkStarted(int coasterId, Drink newDrink) {
+
+            }
+        });
+        service.start();
     }
 
     @Override
