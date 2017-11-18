@@ -58,10 +58,10 @@ public class AllCoastersFragment extends Fragment implements AllCoastersAdapter.
     private List<Coaster> getAllCoasters() {
 
         List<Coaster> dummyCoasters = new ArrayList<Coaster>();
-        dummyCoasters.add(new Coaster("Charlie Sheen", 3));
-        dummyCoasters.add(new Coaster("Ozzy Osbourne", 5));
-        dummyCoasters.add(new Coaster("Lindsey Lohan", 1));
-        dummyCoasters.add(new Coaster("Britney Spears", 4));
+        dummyCoasters.add(new Coaster("Charlie Sheen", 3, "http://i.dailymail.co.uk/i/pix/2012/03/12/article-0-121D6E7E000005DC-528_634x612.jpg"));
+        dummyCoasters.add(new Coaster("Ozzy Osbourne", 5, "http://www.audio-music.info/pic/Osbourne_Ozzy.jpg"));
+        dummyCoasters.add(new Coaster("Lindsey Lohan", 1, "http://popbytes.com/img/lindsay-lohan-jan5-JF.jpg"));
+        dummyCoasters.add(new Coaster("Britney Spears", 4, "http://www.evilbeetgossip.com/wp-content/uploads/2012/09/Britney-Spears-5.jpg"));
 
 
         dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", 0.99, Drink.DrinkType.COCKTAIL));

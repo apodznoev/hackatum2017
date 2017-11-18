@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.models.Coaster;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -59,11 +61,13 @@ public class EmptyDrinkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public static class OverviewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        private Context mContext;
         private Coaster mCoaster;
         private OnItemClickListener mListener;
         private TextView mCoasterName;
         private TextView mTableNumber;
         private TextView mCurrentDrink;
+        private ImageView mCoasterAvatar;
         private CardView mCardView;
 
         public OverviewHolder(View v, OnItemClickListener listener) {
@@ -72,6 +76,7 @@ public class EmptyDrinkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             mCoasterName = (TextView) v.findViewById(R.id.tv_coaster_name);
             mTableNumber = (TextView) v.findViewById(R.id.tv_table_number);
             mCurrentDrink = (TextView) v.findViewById(R.id.tv_current_drink);
+            mCoasterAvatar = (ImageView) v.findViewById(R.id.iv_coaster_avatar);
             mCardView = (CardView) v.findViewById(R.id.cardview);
             mCardView.setOnClickListener(this);
         }
@@ -84,12 +89,14 @@ public class EmptyDrinkAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void bindOverview(Context context, Coaster coaster) {
+            mContext = context;
             mCoaster = coaster;
             mCoasterName.setText(coaster.getName());
             mTableNumber.setText(String.valueOf(coaster.getTableNumber()));
             if(coaster.getCurrentDrink() != null) {
                 mCurrentDrink.setText(coaster.getCurrentDrink().getName());
             }
+            Picasso.with(mContext).load(mCoaster.getImageUrl()).into(mCoasterAvatar);
         }
     }
 }

@@ -6,12 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.models.Coaster;
 import com.example.android.saufdeckel.models.Drink;
 import com.example.android.saufdeckel.ui.adapters.detail.CoasterDrinksAdapter;
 import com.example.android.saufdeckel.ui.fragments.BaseParentFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -62,6 +65,10 @@ public class CoasterDetailFragment extends BaseParentFragment {
                 getActivity(), LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mAdapter);
 
+        ImageView coasterAvatar = view.findViewById(R.id.iv_avatar_profile);
+        TextView coasterName = view.findViewById(R.id.tv_coaster_name);
+        Picasso.with(getContext()).load(mCoaster.getImageUrl()).into(coasterAvatar);
+        coasterName.setText(mCoaster.getName());
         return view;
     }
 

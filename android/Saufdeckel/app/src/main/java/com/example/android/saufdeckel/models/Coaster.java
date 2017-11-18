@@ -18,12 +18,14 @@ public class Coaster implements Parcelable {
     private final String mName;
     private int mTableNumber;
     private final List<Drink> mAllDrinks;
+    private final String mImageUrl;
 
-    public Coaster(String name, int tableNumber) {
+    public Coaster(String name, int tableNumber, String imageUrl) {
         mId = counter.incrementAndGet();
         mName = name;
         mTableNumber = tableNumber;
         mAllDrinks = new ArrayList<>();
+        mImageUrl = imageUrl;
     }
 
     public String getName() {
@@ -52,6 +54,10 @@ public class Coaster implements Parcelable {
         return mAllDrinks;
     }
 
+    public String getImageUrl() {
+        return mImageUrl;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -63,6 +69,7 @@ public class Coaster implements Parcelable {
         parcel.writeString(mName);
         parcel.writeInt(mTableNumber);
         parcel.writeList(mAllDrinks);
+        parcel.writeString(mImageUrl);
     }
 
     public static final Parcelable.Creator<Coaster> CREATOR
@@ -82,5 +89,6 @@ public class Coaster implements Parcelable {
         mTableNumber = in.readInt();
         mAllDrinks = new ArrayList<Drink>();
         in.readList(mAllDrinks, null);
+        mImageUrl = in.readString();
     }
 }

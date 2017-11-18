@@ -34,7 +34,7 @@ public class Drink {
     }
 
     public enum DrinkType {
-        BEER("Beer"), COCKTAIL("Fancy coctail"), SHOT("Shot");
+        BEER("Beer"), COCKTAIL("Cocktail"), SHOT("Shot");
 
         private final String uiName;
 

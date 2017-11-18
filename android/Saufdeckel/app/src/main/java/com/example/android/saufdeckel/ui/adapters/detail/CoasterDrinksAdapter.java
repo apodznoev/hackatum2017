@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.models.Coaster;
 import com.example.android.saufdeckel.models.Drink;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     public static class OverviewHolder extends RecyclerView.ViewHolder {
 
+        private Context mContext;
         private Drink mDrink;
         private TextView mName;
         private TextView mType;
@@ -67,6 +69,7 @@ public class CoasterDrinksAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         public void bindOverview(Context context, Drink drink) {
+            mContext = context;
             mDrink = drink;
             mName.setText(drink.getName());
             mType.setText(drink.getType().getUiName());
