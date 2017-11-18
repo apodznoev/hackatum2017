@@ -17,9 +17,6 @@ import com.example.android.saufdeckel.ui.adapters.AllCoastersAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * Created by lars on 18.11.17.
  */
@@ -66,7 +63,7 @@ public class AllCoastersFragment extends Fragment implements AllCoastersAdapter.
         dummyCoasters.add(new Coaster("Britney Spears", 4));
 
 
-        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", Drink.DrinkType.Cocktail));
+        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", mPrice, Drink.DrinkType.Cocktail));
 
         return dummyCoasters;
     }

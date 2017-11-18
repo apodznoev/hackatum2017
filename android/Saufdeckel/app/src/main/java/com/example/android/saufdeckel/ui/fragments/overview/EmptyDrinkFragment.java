@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.android.saufdeckel.R;
 import com.example.android.saufdeckel.models.Coaster;
@@ -17,10 +16,6 @@ import com.example.android.saufdeckel.ui.adapters.EmptyDrinkAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by lars on 18.11.17.
@@ -67,7 +62,7 @@ public class EmptyDrinkFragment extends Fragment implements EmptyDrinkAdapter.On
         dummyCoasters.add(new Coaster("Lindsey Lohan", 1));
 
 
-        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", Drink.DrinkType.Cocktail));
+        dummyCoasters.get(0).addDrink(new Drink("Gin Tonic", mPrice, Drink.DrinkType.Cocktail));
 
         return dummyCoasters;
     }
